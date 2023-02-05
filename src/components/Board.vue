@@ -6,30 +6,29 @@
       height="180"
       style="border: 1px solid black"
     ></canvas>
-    <div v-for="(country, index) in countries" :key="index">
+    <div v-for="(country, key) in countries" :key="key" class="invisible">
       <img
         :src="'src/assets/images/countries/' + country + '.png'"
         :id="country"
+      />
+    </div>
+    <div>
+      <img
+        :src="'src/assets/images/borders/borders_and_connections.png'"
+        id="borders"
       />
     </div>
   </div>
 </template>
 
 <script>
-//const imageUrl = new URL("/src/assets/images/logo.svg", import.meta.url).href;
-//console.log(imageUrl);
-
 export default {
   data() {
     return {
       context: null,
       //images: ["@images/asia/japan.png", "@images/asia/china.png"],
       //images: ["src/images/asia/japan.png", "src/images/asia/china.png"],
-      //south_america: ["argentina", "brazil", "peru", "venezuela"],
-      //australia: ["indonesia", "new_guinea", "western_australia", "eastern_australia"],
-
       // OKAY:  "argentina", "brazil", "peru", "venezuela", "alaska", "alberta", "central_america", "eastern_territories", "greenland", "northwest_territories", "ontario", "quebec", "western_territories", "great_britain", "iceland", "northern_europe", "scandinavia", "southern_europe", "ukraine", "western_europe", "congo", "east_africa", "egypt", "madagascar", "north_africa", "south_africa", "eastern_australia", "indonesia",  "new_guinea",  "western_australia", "afghanistan", "china", "india", "irkutsk", "japan", "kamchatka", "middle_east", "mongolia", "siam", "siberia", "ural", "yakutsk"
-
       countries: [
         "argentina",
         "brazil",
@@ -97,10 +96,60 @@ export default {
     // });
     //this.resize();
   },
+  created() {
+    this.MY_COUNTRIES = [
+      "argentina",
+      "brazil",
+      "peru",
+      "venezuela",
+      "alaska",
+      "alberta",
+      "central_america",
+      "eastern_territories",
+      "greenland",
+      "northwest_territories",
+      "ontario",
+      "quebec",
+      "western_territories",
+      "great_britain",
+      "iceland",
+      "northern_europe",
+      "scandinavia",
+      "southern_europe",
+      "ukraine",
+      "western_europe",
+      "congo",
+      "east_africa",
+      "egypt",
+      "madagascar",
+      "north_africa",
+      "south_africa",
+      "eastern_australia",
+      "indonesia",
+      "new_guinea",
+      "western_australia",
+      "afghanistan",
+      "china",
+      "india",
+      "irkutsk",
+      "japan",
+      "kamchatka",
+      "middle_east",
+      "mongolia",
+      "siam",
+      "siberia",
+      "ural",
+      "yakutsk",
+    ];
+  },
   methods: {
     onResetBoard() {},
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.invisible {
+  display: none;
+}
+</style>
