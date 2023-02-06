@@ -1,5 +1,5 @@
 <template>
-  <div ref="container">
+  <div class="container">
     <!-- <canvas
       ref="board"
       width="320"
@@ -41,9 +41,10 @@ export default {
   mounted() {
     //this.context = this.$refs.board.getContext("2d");
 
-    this.$refs.container.style.backgroundColor = "hotpink";
+    //this.$refs.container.style.backgroundColor = "hotpink";
 
     console.log("MOUNTED");
+
     //console.log(this.$refs.container);
     // for (let i = 0; i < this.countries.length; i++) {
     //   const country = document;
@@ -100,21 +101,25 @@ export default {
 
 <style scoped>
 .container {
+  position: absolute;
   width: 100%;
-  height: 100%;
-  background-color: pink;
+  height: 100vh;
+  background-color: rgb(191, 228, 233);
+  text-align: center;
+  overflow: hidden;
 }
 
 .country {
-  position: absolute;
   z-index: 2;
 }
 .border {
-  position: absolute;
   z-index: 3;
 }
 .image {
+  position: absolute;
   image-rendering: pixelated;
   margin: 0 auto;
+  transform: translateX(-50%);
+  height: 100%;
 }
 </style>
