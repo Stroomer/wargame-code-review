@@ -12,13 +12,10 @@ export default {
   data() {
     return {
       state: "init",
-      //test: `@images/test.png`,
     };
   },
   created() {},
-  mounted() {
-    //console.log(this.state);
-  },
+  mounted() {},
   methods: {},
 };
 </script>

@@ -1,5 +1,9 @@
 import { createApp } from "vue";
-//import './style.css'
 import App from "./App.vue";
+import { gCountries } from "./assets/js/globals.js";
 
-createApp(App).mount("#app");
+const app = createApp(App);
+
+app.config.globalProperties.countries = gCountries;
+
+app.mount("#app");
