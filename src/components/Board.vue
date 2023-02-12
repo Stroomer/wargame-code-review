@@ -1,27 +1,25 @@
 <template>
   <div class="container">
-    <!-- <canvas
+    <canvas
       ref="board"
       width="320"
       height="180"
+      class="image"
       style="border: 1px solid black"
-    ></canvas> -->
+    ></canvas>
     <img
       v-for="(country, key) in countries"
+      ref="country"
       :key="key"
       :src="'src/assets/images/countries/' + country + '.png'"
-      :id="country"
       class="country image"
-      v-show="
-        (country !== attacker && country !== defender) ||
-        (country === attacker && attackerVisible) ||
-        (country === defender && defenderVisible)
-      "
+      v-show="false"
     />
     <img
-      :src="'src/assets/images/borders/borders_and_connections.png'"
-      id="borders"
+      :src="'src/assets/images/borders/borders.png'"
+      ref="borders"
       class="border image"
+      v-show="false"
     />
   </div>
 </template>
@@ -31,26 +29,16 @@ export default {
   data() {
     return {
       context: null,
-      attacker: null,
-      attackerVisible: true,
-      defender: null,
-      defenderVisible: true,
-      isVisible: true,
     };
   },
   mounted() {
-    //this.context = this.$refs.board.getContext("2d");
+    const countries = this.getCountries();
 
-    //this.$refs.container.style.backgroundColor = "hotpink";
+    this.context = this.$refs.board.getContext("2d");
+
+    this.draw(countries);
 
     console.log("MOUNTED");
-
-    //console.log(this.$refs.container);
-    // for (let i = 0; i < this.countries.length; i++) {
-    //   const country = document;
-    // }
-
-    // this.context.drawImage(this.imageUrl, 0, 0);
 
     // this.socket.on("position", (data) => {
     //   this.position = data;
@@ -62,40 +50,43 @@ export default {
     //   );
     //   this.context.fillRect(this.position.x, this.position.y, 20, 20);
     // });
-    //this.resize();
-
-    this.setAttacker("brazil");
-    this.setDefender("north_africa");
   },
   methods: {
-    setAttacker(country) {
-      this.attacker = country;
-      this.attackerIntervalID = setInterval(() => {
-        this.attackerVisible = !this.attackerVisible;
-      }, 250);
-      console.log(country);
+    getCountries() {
+      const countries = [];
+      const refs = this.$refs.country.length;
+      for (let i = 0; i < refs; i++) {
+        const img = this.$refs.country[i];
+        const file = img.src.split("/")[7];
+        const name = file.substr(0, file.length - 4);
+        countries[name] = img;
+      }
+      return countries;
     },
-    setDefender(country) {
-      this.defender = country;
-      this.defenderIntervalID = setInterval(() => {
-        this.defenderVisible = !this.defenderVisible;
-      }, 250);
-      console.log(country);
+
+    draw(countries) {
+      Object.entries(countries).forEach(([key, value]) => {
+        this.context.drawImage(value, 0, 0);
+      });
+      this.context.drawImage(this.$refs.borders, 0, 0);
     },
+
+    // setAttacker(country) {
+    //   this.attacker = country;
+    //   this.attackerIntervalID = setInterval(() => {
+    //     this.attackerVisible = !this.attackerVisible;
+    //   }, 250);
+    //   console.log(country);
+    // },
+    // setDefender(country) {
+    //   this.defender = country;
+    //   this.defenderIntervalID = setInterval(() => {
+    //     this.defenderVisible = !this.defenderVisible;
+    //   }, 250);
+    //   console.log(country);
+    // },
   },
-  computed() {
-    // checkVisibility(country) {
-    //   console.log("country: " + country);
-    //   console.log("attacker: " + this.attacker);
-    //   if (country === attacker) {
-    //     return this.attackerVisible;
-    //   } else if (country === defender) {
-    //     return this.defenderVisible;
-    //   } else {
-    //     return true;
-    //   }
-    // }
-  },
+  computed() {},
 };
 </script>
 
