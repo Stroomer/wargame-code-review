@@ -1,1 +1,1 @@
-# Vue 3 + Vite + Node + SocketIO
+# Vite + Node + SocketIO
