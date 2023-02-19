@@ -28,24 +28,3 @@ class Map
 }
 
 export default Map;
-
-
-
-
-
-// for (let i = 0; i < this.countries.length; i++) {
-        //   const { name, src, dest } = this.countries[i];
-        //   this.ctx.drawImage(
-        //     image,
-        //     src.x,
-        //     src.y,
-        //     src.w,
-        //     src.h,
-        //     dest.x,
-        //     dest.y,
-        //     dest.w,
-        //     dest.h
-        //   );
-        // }
-        //};
-        //image.src = "/src/assets/images/countries/countries.png";

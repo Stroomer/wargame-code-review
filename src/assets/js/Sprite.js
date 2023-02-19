@@ -19,6 +19,7 @@ class Sprite {
         const dh = this.data.dest.h;
 
         ctx.drawImage(this.area, sx, sy, sw, sh, dx, dy, dw, dh);
+        ctx.drawImage(this.border, sx, sy, sw, sh, dx, dy, dw, dh);
     }
   }
 

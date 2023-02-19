@@ -2,7 +2,8 @@
     {
       "name": "alaska",
       "src": { "x": 0, "y": 116, "w": 37, "h": 19 },
-      "dest": { "x": 3, "y": 16, "w": 37, "h": 19 }
+      "dest": { "x": 3, "y": 16, "w": 37, "h": 19 },
+      "color": "#"
     },
     {
       "name": "northwest_territories",
