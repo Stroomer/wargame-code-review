@@ -1,25 +1,27 @@
 class Sprite {
     constructor(config) {
-        this.data     = config.data;
-        this.area     = config.images['area'];
-        this.border   = config.images['border'];
-        this.selected = config.images['selected'];
-        
+        this.src      = config.src;
+        this.dest     = config.dest;
+        this.area     = config.area;
+        this.border   = config.border;
+        this.selected = config.selected;
+        this.canvas   = config.canvas;
+        this.ctx      = config.ctx;
     }
     
-    draw(ctx) {
-        const sx = this.data.src.x;
-        const sy = this.data.src.y;
-        const sw = this.data.src.w;
-        const sh = this.data.src.h;
+    draw() {
+        const sx = this.src.x;
+        const sy = this.src.y;
+        const sw = this.src.w;
+        const sh = this.src.h;
 
-        const dx = this.data.dest.x;
-        const dy = this.data.dest.y;
-        const dw = this.data.dest.w;
-        const dh = this.data.dest.h;
+        const dx = this.dest.x;
+        const dy = this.dest.y;
+        const dw = this.dest.w;
+        const dh = this.dest.h;
 
-        ctx.drawImage(this.area, sx, sy, sw, sh, dx, dy, dw, dh);
-        ctx.drawImage(this.border, sx, sy, sw, sh, dx, dy, dw, dh);
+        this.ctx.drawImage(this.area, sx, sy, sw, sh, dx, dy, dw, dh);
+        this.ctx.drawImage(this.border, sx, sy, sw, sh, dx, dy, dw, dh);
     }
   }
 
