@@ -1,2 +1,11 @@
 import "./../css/style.css";
-import "./init.js";
+import Game from "./Game.js";
+
+
+const game = new Game({
+  element: document.querySelector(".game-container")
+});
+
+game.init();
+
+export default game;

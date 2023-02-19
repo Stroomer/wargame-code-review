@@ -1,33 +1,32 @@
+import utils from './utils.js';
+import Map from './Map.js';
+
 class Game {
   constructor(config) {
-    this.element = config.element;
-    this.countries = config.countries;
-    this.canvas = this.element.querySelector(".game-canvas");
-    this.ctx = this.canvas.getContext("2d");
+    this.element     = config.element;
+    this.canvas      = this.element.querySelector(".game-canvas");
+    this.ctx         = this.canvas.getContext("2d");
+
+    this.json        = [];    // territory json
+    this.images      = [];    // territory images  
+    this.map         = null;
   }
 
-  init() {
-    console.log("Hello from the Wargame object", this);
+  async init() {
+    console.log("Game.init()");
 
-    const image = new Image();
-    image.onload = () => {
-      for (let i = 0; i < this.countries.length; i++) {
-        const { name, src, dest } = this.countries[i];
-        this.ctx.drawImage(
-          image,
-          src.x,
-          src.y,
-          src.w,
-          src.h,
-          dest.x,
-          dest.y,
-          dest.w,
-          dest.h
-        );
-      }
-    };
-    image.src = "/src/assets/images/countries/countries.png";
+    this.json[0] = await utils.getJSON('/src/assets/json/territories.json');
+    
+    this.images['area']    = await utils.getPNG('/src/assets/images/territories/area.png');  
+    this.images['border']  = await utils.getPNG('/src/assets/images/territories/border.png');  
+    this.images['selected'] = await utils.getPNG('/src/assets/images/territories/selected.png');  
+
+    this.map = new Map({ json: this.json, images: this.images, canvas: this.canvas, ctx: this.ctx });
+    this.map.init();
+    this.map.draw(this.ctx);
   }
 }
 
 export default Game;
+
+
