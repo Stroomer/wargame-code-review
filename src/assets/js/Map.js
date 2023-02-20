@@ -1,4 +1,5 @@
 import Territory from './Territory.js';
+import utils from './utils.js';
 
 class Map
 {
@@ -9,6 +10,8 @@ class Map
         this.images = config.images;
         this.data   = config.json['territories'];
         this.canvas = config.canvas;
+        this.ctx    = config.canvas.getContext('2d', { willReadFrequently: true });
+
         this.buffer = config.buffer;
 
         this.territories = [];
@@ -28,25 +31,28 @@ class Map
             this.territories[i].init();
         }
 
-        this.canvas.addEventListener('click', this.click.bind(this));
+        this.canvas.addEventListener('mousemove', this.mousemove.bind(this));
     }
 
-    click(event) 
+    mousemove(event) 
     {
         const canvas = event.target;
-        const ctx    = canvas.getContext('2d');
-        const rect   = canvas.getBoundingClientRect();
-        const x      = event.clientX - rect.left;
-        const y      = event.clientY - rect.top;
-        const width  = rect.width;
-        const height = rect.height;
-        const scaleX = width / 320;
-        const scaleY = height / 180;
-        const data   = ctx.getImageData(x/scaleX, y/scaleY, 1, 1).data;
-        const rgb    = ((data[0] << 16) | (data[1] << 8) | (data[2])).toString(16);
-        const hex    = "#" + ("00000000" + rgb).slice(-6);
+        //const ctx    = canvas.getContext('2d', { willReadFrequently: true });
 
-        console.log( hex ); 
+        const { clientX, clientY }         = event;
+        const { left, top, width, height } = canvas.getBoundingClientRect();
+        
+        const x    = (clientX - left) / (width  / 320);
+        const y    = (clientY - top)  / (height / 180);
+        const data = this.ctx.getImageData(x, y, 1, 1).data;
+        const hex  = utils.toHex(data);
+
+        // if(hex !== '#000000') {
+        //     console.log(hex);
+        // }
+
+        console.log( utils.toDec(hex) );
+
     }
 
     draw(buffer, canvas)
@@ -75,3 +81,4 @@ export default Map;
 //         throw "Invalid color component";
 //     return ((r << 16) | (g << 8) | b).toString(16);
 // }
+
