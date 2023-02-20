@@ -2,15 +2,11 @@ import Sprite from './Sprite.js';
 
 class Territory {
   constructor(config) {
-    const { id, canvas, ctx, json, images } = config;
-    const { area, border, selected }        = images; 
-    const { name, src, dest }               = json['territories'][id];
-
+    const { id, data } = config;
+    
     this.id     = id;
-    this.canvas = canvas;
-    this.ctx    = ctx;
-    this.name   = name;
-    this.sprite = new Sprite({ src, dest, area, border, selected, canvas, ctx });
+    this.name   = data.name;
+    this.sprite = new Sprite({ id, ...config});
   }
 
   init() {

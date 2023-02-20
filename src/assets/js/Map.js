@@ -4,24 +4,25 @@ class Map
 {
     constructor(config)
     {
-        this.config      = config;
+        this.config = config;
         this.territories = [];
     }
 
     init()
     {
-        const data = this.config.json['territories'];
+        const data   = this.config.json['territories'];
+        const images = this.config.images;
         
         for (let i=0; i<data.length; i++) {
-            this.territories[i] = new Territory({ ...this.config, id:i });
+            this.territories[i] = new Territory({ id:i, data:data[i], images:images });
             this.territories[i].init();
         }
     }
 
-    draw()
+    draw(ctx)
     {
         for (let i=0; i<this.territories.length; i++) {
-            this.territories[i].sprite.draw();
+            this.territories[i].sprite.draw(ctx);
         }
     }
 }
