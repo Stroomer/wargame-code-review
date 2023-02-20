@@ -4,25 +4,37 @@ class Map
 {
     constructor(config)
     {
-        this.config = config;
+        console.log('Map.constructor');
+        
+        this.images = config.images;
+        this.data   = config.json['territories'];
+        this.canvas = config.canvas;
+        this.buffer = config.buffer;
+
         this.territories = [];
+
+        for (let i=0; i<this.data.length; i++) 
+        {
+            this.territories[i] = new Territory({ id:i, ...this.data[i], buffer:this.buffer, canvas:this.canvas, images:this.images } );
+        }
     }
 
     init()
     {
-        const data   = this.config.json['territories'];
-        const images = this.config.images;
-        
-        for (let i=0; i<data.length; i++) {
-            this.territories[i] = new Territory({ id:i, data:data[i], images:images });
+        console.log('Map.init');
+
+        for (let i=0; i<this.territories.length; i++) 
+        {
             this.territories[i].init();
         }
     }
 
-    draw(ctx)
+    draw(buffer, canvas)
     {
+        console.log('Map.draw');
+
         for (let i=0; i<this.territories.length; i++) {
-            this.territories[i].sprite.draw(ctx);
+            this.territories[i].sprite.draw(buffer, canvas);
         }
     }
 }

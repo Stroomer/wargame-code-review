@@ -1,52 +1,34 @@
 class Sprite {
-    constructor(config) {
-        this.config = config;
+    constructor(config) 
+    {
+        console.log('Sprite.constructor');
+        
         this.id     = config.id;
-        this.name   = config.data.name;
-        this.src    = config.data.src;
-        this.dest   = config.data.dest;
-        this.color  = config.data.color;
+        this.name   = config.name;
+        this.color  = config.color;
         this.images = config.images;
 
-        //console.log(config);
+        this.data   = { sx:config.src.x,  sy:config.src.y,  sw:config.src.w,  sh:config.src.h, dx:config.dest.x, dy:config.dest.y, dw:config.dest.w, dh:config.dest.h };
     }
     
-    draw(ctx) {
-        const sx = this.src.x;
-        const sy = this.src.y;
-        const sw = this.src.w;
-        const sh = this.src.h;
+    draw(buffer, canvas) 
+    {
+        console.log('Territory.sprite.draw');
 
-        const dx = this.dest.x;
-        const dy = this.dest.y;
-        const dw = this.dest.w;
-        const dh = this.dest.h;
+        const bctx = buffer.getContext('2d');
+        const ctx  = canvas.getContext('2d');
+        const { sx, sy, sw, sh, dx, dy, dw, dh } = this.data;
 
-        console.log(this.src);
-        console.log(this.dest);
-        console.log("");
+        bctx.clearRect(0, 0, buffer.width, buffer.height);
 
-        
-        if(this.id === 0) {
+        bctx.drawImage(this.images.area,  sx, sy, sw, sh,  dx, dy, dw, dh);          // draw (source) area
+        bctx.globalCompositeOperation = "source-in";
+        bctx.fillStyle = this.color;                                                     
+        bctx.fillRect(dx, dy, dw, dh);                                               // draw fillcolor
+        bctx.globalCompositeOperation = "source-over";
+        bctx.drawImage(this.images.border,  sx, sy, sw, sh,  dx, dy, dw, dh);
 
-            
-            
-            ctx.drawImage(this.images.area,  sx, sy, sw, sh,  dx, dy, dw, dh);
-            
-            ctx.globalCompositeOperation = "source-in";
-
-            ctx.fillStyle = 'blue';
-            ctx.fillRect(dx, dy, dw, dh);
-
-            console.log(dw, dh);
-
-            //ctx.drawImage(this.images.border,  sx, sy, sw, sh,  dx, dy, dw, dh);
-            // const { width, height } = this.selected;
-            // console.log(width, height);
-            // this.ctx.drawImage(this.selected,  0, 0, 64, 64,  0, 0, 64, 64);  // dx, dy, width/3, height,  dx, dy, width/3, height
-            // console.log();
-        }    
-    
+        ctx.drawImage(buffer, 0, 0);
     }
   }
 
