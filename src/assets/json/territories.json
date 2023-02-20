@@ -39,7 +39,7 @@
       "name": "western_territories",
       "src": { "x": 57, "y": 115, "w": 33, "h": 22 },
       "dest": { "x": 22, "y": 41, "w": 33, "h": 22 },
-      "color": "#bf9748"
+      "color": "#bf9747"
     },
     {
       "name": "eastern_territories",
@@ -117,13 +117,13 @@
       "name": "iceland",
       "src": { "x": 81, "y": 59, "w": 10, "h": 9 },
       "dest": { "x": 128, "y": 18, "w": 10, "h": 9 },
-      "color": "#38a6ed"
+      "color": "#38a6ee"
     },
     {
       "name": "great_britain",
       "src": { "x": 81, "y": 44, "w": 15, "h": 15 },
       "dest": { "x": 135, "y": 24, "w": 15, "h": 15 },
-      "color": "#2379ea"
+      "color": "#2379eb"
     },
     {
       "name": "scandinavia",
@@ -165,25 +165,25 @@
       "name": "siberia",
       "src": { "x": 153, "y": 74, "w": 32, "h": 34 },
       "dest": { "x": 209, "y": 10, "w": 32, "h": 34 },
-      "color": "#4ebc52"
+      "color": "#4ebc53"
     },
     {
       "name": "yakutsk",
       "src": { "x": 109, "y": 108, "w": 45, "h": 21 },
       "dest": { "x": 233, "y": 13, "w": 45, "h": 21 },
-      "color": "#468232"
+      "color": "#468233"
     },
     {
       "name": "irkutsk",
       "src": { "x": 0, "y": 135, "w": 40, "h": 16 },
       "dest": { "x": 231, "y": 26, "w": 40, "h": 16 },
-      "color": "#52a138"
+      "color": "#52a137"
     },
     {
       "name": "kamchatka",
       "src": { "x": 140, "y": 41, "w": 43, "h": 33 },
       "dest": { "x": 263, "y": 17, "w": 43, "h": 33 },
-      "color": "#1a4014"
+      "color": "#1a4013"
     },
     {
       "name": "afghanistan",
@@ -195,13 +195,13 @@
       "name": "middle_east",
       "src": { "x": 100, "y": 33, "w": 40, "h": 37 },
       "dest": { "x": 173, "y": 47, "w": 40, "h": 37 },
-      "color": "#1a4014"
+      "color": "#1a4013"
     },
     {
       "name": "india",
       "src": { "x": 243, "y": 0, "w": 39, "h": 41 },
       "dest": { "x": 210, "y": 53, "w": 39, "h": 41 },
-      "color": "#40612e"
+      "color": "#40612d"
     },
     {
       "name": "mongolia",
