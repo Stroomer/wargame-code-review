@@ -14,7 +14,6 @@ class Territory
     this.state      = Territory.STATES[0];
   }
 
-
   init() 
   {
     console.log('Territory.init');

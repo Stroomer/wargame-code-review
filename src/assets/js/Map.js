@@ -7,12 +7,13 @@ class Map
     {
         console.log('Map.constructor');
         
-        this.images = config.images;
-        this.data   = config.json['territories'];
-        this.canvas = config.canvas;
-        this.ctx    = config.canvas.getContext('2d', { willReadFrequently: true });
+        this.images  = config.images;
+        this.data    = config.json['territories'];
+        this.canvas  = config.canvas;
+        this.ctx     = config.canvas.getContext('2d', { willReadFrequently: true });
 
-        this.buffer = config.buffer;
+        this.buffer  = config.buffer;
+        this.hoverId = null;
 
         this.territories = [];
 
@@ -31,29 +32,40 @@ class Map
             this.territories[i].init();
         }
 
-        this.canvas.addEventListener('mousemove', this.mousemove.bind(this));
+        this.canvas.addEventListener('mousemove', this.onHover.bind(this));
     }
 
-    mousemove(event) 
+    onHover(event)
     {
-        const canvas = event.target;
-        //const ctx    = canvas.getContext('2d', { willReadFrequently: true });
+        const { target, clientX, clientY } = event;
+        const { left, top, width, height } = target.getBoundingClientRect();
 
-        const { clientX, clientY }         = event;
-        const { left, top, width, height } = canvas.getBoundingClientRect();
-        
         const x    = (clientX - left) / (width  / 320);
         const y    = (clientY - top)  / (height / 180);
         const data = this.ctx.getImageData(x, y, 1, 1).data;
         const hex  = utils.toHex(data);
+        const dec  = utils.toDec(hex);
 
-        // if(hex !== '#000000') {
-        //     console.log(hex);
+        if(dec !== 0)
+        {
+            const index = this.data.findIndex(obj => obj.color === hex);
+            const territory = this.territories[index];
+
+            territory.sprite.draw(this.buffer, this.canvas, true);
+        }
+
+
+        //console.log(dec);
+        // if(dec <= 0 && this.hoverId !== null) 
+        // {
+        //     // unhover territory        
+        //     this.hoverId = null;
+        //     return; 
         // }
-
-        console.log( utils.toDec(hex) );
-
+        // const index = this.data.findIndex(obj => obj.color === hex);
     }
+
+
 
     draw(buffer, canvas)
     {

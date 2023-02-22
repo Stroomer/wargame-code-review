@@ -3,252 +3,252 @@
       "name": "alaska",
       "src": { "x": 0, "y": 116, "w": 37, "h": 19 },
       "dest": { "x": 3, "y": 16, "w": 37, "h": 19 },
-      "color": "#d7b594"
+      "color": "d7b594"
     },
     {
       "name": "northwest_territories",
       "src": { "x": 0, "y": 97, "w": 57, "h": 19 },
       "dest": { "x": 29, "y": 11, "w": 57, "h": 19 },
-      "color": "#db9e82"
+      "color": "db9e82"
     },
     {
       "name": "greenland",
       "src": { "x": 109, "y": 74, "w": 44, "h": 25 },
       "dest": { "x": 93, "y": 3, "w": 44, "h": 25 },
-      "color": "#dcac7d"
+      "color": "dcac7d"
     },
     {
       "name": "alberta",
       "src": { "x": 239, "y": 144, "w": 30, "h": 13 },
       "dest": { "x": 28, "y": 29, "w": 30, "h": 13 },
-      "color": "#d49133"
+      "color": "d49133"
     },
     {
       "name": "ontario",
       "src": { "x": 213, "y": 135, "w": 26, "h": 21 },
       "dest": { "x": 51, "y": 29, "w": 26, "h": 21 },
-      "color": "#cca964"
+      "color": "cca964"
     },
     {
       "name": "quebec",
       "src": { "x": 122, "y": 129, "w": 26, "h": 22 },
       "dest": { "x": 72, "y": 26, "w": 26, "h": 22 },
-      "color": "#bf9748"
+      "color": "bf9748"
     },
     {
       "name": "western_territories",
       "src": { "x": 57, "y": 115, "w": 33, "h": 22 },
       "dest": { "x": 22, "y": 41, "w": 33, "h": 22 },
-      "color": "#bf9747"
+      "color": "bf9747"
     },
     {
       "name": "eastern_territories",
       "src": { "x": 38, "y": 44, "w": 43, "h": 29 },
       "dest": { "x": 40, "y": 41, "w": 43, "h": 29 },
-      "color": "#d4963f"
+      "color": "d4963f"
     },
     {
       "name": "central_america",
       "src": { "x": 100, "y": 0, "w": 57, "h": 33 },
       "dest": { "x": 23, "y": 58, "w": 57, "h": 33 },
-      "color": "#c3852b"
+      "color": "c3852b"
     },
     {
       "name": "venezuela",
       "src": { "x": 90, "y": 129, "w": 32, "h": 21 },
       "dest": { "x": 60, "y": 83, "w": 32, "h": 21 },
-      "color": "#cf573c"
+      "color": "cf573c"
     },
     {
       "name": "peru",
       "src": { "x": 236, "y": 41, "w": 34, "h": 38 },
       "dest": { "x": 57, "y": 96, "w": 34, "h": 38 },
-      "color": "#cc2430"
+      "color": "cc2430"
     },
     {
       "name": "argentina",
       "src": { "x": 57, "y": 73, "w": 23, "h": 42 },
       "dest": { "x": 71, "y": 123, "w": 23, "h": 42 },
-      "color": "#a53030"
+      "color": "a53030"
     },
     {
       "name": "brazil",
       "src": { "x": 57, "y": 0, "w": 43, "h": 44 },
       "dest": { "x": 68, "y": 94, "w": 43, "h": 44 },
-      "color": "#e41c26"
+      "color": "e41c26"
     },
     {
       "name": "north_africa",
       "src": { "x": 157, "y": 0, "w": 45, "h": 41 },
       "dest": { "x": 126, "y": 56, "w": 45, "h": 41 },
-      "color": "#884b2b"
+      "color": "884b2b"
     },
     {
       "name": "egypt",
       "src": { "x": 40, "y": 137, "w": 30, "h": 18 },
       "dest": { "x": 155, "y": 60, "w": 30, "h": 18 },
-      "color": "#965442"
+      "color": "965442"
     },
     {
       "name": "east_africa",
       "src": { "x": 202, "y": 40, "w": 34, "h": 41 },
       "dest": { "x": 168, "y": 73, "w": 34, "h": 41 },
-      "color": "#994025"
+      "color": "994025"
     },
     {
       "name": "congo",
       "src": { "x": 184, "y": 111, "w": 29, "h": 32 },
       "dest": { "x": 154, "y": 86, "w": 29, "h": 32 },
-      "color": "#754024"
+      "color": "754024"
     },
     {
       "name": "south_africa",
       "src": { "x": 236, "y": 79, "w": 34, "h": 32 },
       "dest": { "x": 157, "y": 110, "w": 34, "h": 32 },
-      "color": "#602c2c"
+      "color": "602c2c"
     },
     {
       "name": "madagascar",
       "src": { "x": 185, "y": 59, "w": 10, "h": 17 },
       "dest": { "x": 191, "y": 114, "w": 10, "h": 17 },
-      "color": "#522c19"
+      "color": "522c19"
     },
     {
       "name": "iceland",
       "src": { "x": 81, "y": 59, "w": 10, "h": 9 },
       "dest": { "x": 128, "y": 18, "w": 10, "h": 9 },
-      "color": "#38a6ee"
+      "color": "38a6ee"
     },
     {
       "name": "great_britain",
       "src": { "x": 81, "y": 44, "w": 15, "h": 15 },
       "dest": { "x": 135, "y": 24, "w": 15, "h": 15 },
-      "color": "#2379eb"
+      "color": "2379eb"
     },
     {
       "name": "scandinavia",
       "src": { "x": 70, "y": 150, "w": 22, "h": 17 },
       "dest": { "x": 153, "y": 15, "w": 22, "h": 17 },
-      "color": "#38a6ed"
+      "color": "38a6ed"
     },
     {
       "name": "northern_europe",
       "src": { "x": 92, "y": 150, "w": 21, "h": 12 },
       "dest": { "x": 149, "y": 32, "w": 21, "h": 12 },
-      "color": "#2379ea"
+      "color": "2379ea"
     },
     {
       "name": "western_europe",
       "src": { "x": 183, "y": 41, "w": 19, "h": 18 },
       "dest": { "x": 137, "y": 38, "w": 19, "h": 18 },
-      "color": "#0f5abd"
+      "color": "0f5abd"
     },
     {
       "name": "southern_europe",
       "src": { "x": 184, "y": 143, "w": 24, "h": 17 },
       "dest": { "x": 154, "y": 41, "w": 24, "h": 17 },
-      "color": "#0e458e"
+      "color": "0e458e"
     },
     {
       "name": "eastern_europe",
       "src": { "x": 202, "y": 0, "w": 41, "h": 40 },
       "dest": { "x": 165, "y": 14, "w": 41, "h": 40 },
-      "color": "#0f6cbd"
+      "color": "0f6cbd"
     },
     {
       "name": "ural",
       "src": { "x": 185, "y": 81, "w": 33, "h": 30 },
       "dest": { "x": 198, "y": 15, "w": 33, "h": 30 },
-      "color": "#51a854"
+      "color": "51a854"
     },
     {
       "name": "siberia",
       "src": { "x": 153, "y": 74, "w": 32, "h": 34 },
       "dest": { "x": 209, "y": 10, "w": 32, "h": 34 },
-      "color": "#4ebc53"
+      "color": "4ebc53"
     },
     {
       "name": "yakutsk",
       "src": { "x": 109, "y": 108, "w": 45, "h": 21 },
       "dest": { "x": 233, "y": 13, "w": 45, "h": 21 },
-      "color": "#468233"
+      "color": "468233"
     },
     {
       "name": "irkutsk",
       "src": { "x": 0, "y": 135, "w": 40, "h": 16 },
       "dest": { "x": 231, "y": 26, "w": 40, "h": 16 },
-      "color": "#52a137"
+      "color": "52a137"
     },
     {
       "name": "kamchatka",
       "src": { "x": 140, "y": 41, "w": 43, "h": 33 },
       "dest": { "x": 263, "y": 17, "w": 43, "h": 33 },
-      "color": "#1a4013"
+      "color": "1a4013"
     },
     {
       "name": "afghanistan",
       "src": { "x": 213, "y": 111, "w": 35, "h": 24 },
       "dest": { "x": 193, "y": 33, "w": 35, "h": 24 },
-      "color": "#52a138"
+      "color": "52a138"
     },
     {
       "name": "middle_east",
       "src": { "x": 100, "y": 33, "w": 40, "h": 37 },
       "dest": { "x": 173, "y": 47, "w": 40, "h": 37 },
-      "color": "#1a4013"
+      "color": "1a4013"
     },
     {
       "name": "india",
       "src": { "x": 243, "y": 0, "w": 39, "h": 41 },
       "dest": { "x": 210, "y": 53, "w": 39, "h": 41 },
-      "color": "#40612d"
+      "color": "40612d"
     },
     {
       "name": "mongolia",
       "src": { "x": 0, "y": 74, "w": 50, "h": 23 },
       "dest": { "x": 232, "y": 37, "w": 50, "h": 23 },
-      "color": "#40612e"
+      "color": "40612e"
     },
     {
       "name": "china",
       "src": { "x": 0, "y": 0, "w": 57, "h": 36 },
       "dest": { "x": 221, "y": 42, "w": 57, "h": 36 },
-      "color": "#468232"
+      "color": "468232"
     },
     {
       "name": "japan",
       "src": { "x": 270, "y": 41, "w": 15, "h": 20 },
       "dest": { "x": 282, "y": 46, "w": 15, "h": 20 },
-      "color": "#4ebc52"
+      "color": "4ebc52"
     },
     {
       "name": "siam",
       "src": { "x": 248, "y": 111, "w": 22, "h": 33 },
       "dest": { "x": 244, "y": 66, "w": 22, "h": 33 },
-      "color": "#1a4014"
+      "color": "1a4014"
     },
     {
       "name": "indonesia",
       "src": { "x": 0, "y": 36, "w": 38, "h": 38 },
       "dest": { "x": 242, "y": 83, "w": 38, "h": 38 },
-      "color": "#a23e8c"
+      "color": "a23e8c"
     },
     {
       "name": "new_guinea",
       "src": { "x": 148, "y": 139, "w": 36, "h": 15 },
       "dest": { "x": 281, "y": 102, "w": 36, "h": 15 },
-      "color": "#9934c9"
+      "color": "9934c9"
     },
     {
       "name": "western_australia",
       "src": { "x": 154, "y": 108, "w": 30, "h": 31 },
       "dest": { "x": 262, "y": 121, "w": 30, "h": 31 },
-      "color": "#781763"
+      "color": "781763"
     },
     {
       "name": "eastern_australia",
       "src": { "x": 81, "y": 70, "w": 28, "h": 42 },
       "dest": { "x": 279, "y": 118, "w": 28, "h": 42 },
-      "color": "#d812dc"
+      "color": "d812dc"
     }
   ]

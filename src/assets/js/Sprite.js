@@ -5,13 +5,13 @@ class Sprite {
         
         this.id     = config.id;
         this.name   = config.name;
-        this.color  = config.color;
+        this.color  = `#${config.color}`;
         this.images = config.images;
 
         this.data   = { sx:config.src.x,  sy:config.src.y,  sw:config.src.w,  sh:config.src.h, dx:config.dest.x, dy:config.dest.y, dw:config.dest.w, dh:config.dest.h };
     }
     
-    draw(buffer, canvas) 
+    draw(buffer, canvas, border=false)    // BORDERTJE TEKENEN.... OF ZO
     {
         console.log('Territory.sprite.draw');
 
@@ -25,8 +25,11 @@ class Sprite {
         bctx.globalCompositeOperation = "source-in";
         bctx.fillStyle = this.color;                                                     
         bctx.fillRect(dx, dy, dw, dh);                                               // draw fillcolor
+        
         bctx.globalCompositeOperation = "source-over";
         bctx.drawImage(this.images.border,  sx, sy, sw, sh,  dx, dy, dw, dh);
+
+
 
         ctx.drawImage(buffer, 0, 0);
     }

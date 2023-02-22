@@ -12,7 +12,7 @@ const utils = {
 
     toHex(data) {
         const rgb = ((data[0] << 16) | (data[1] << 8) | (data[2])).toString(16);
-        return "#" + ("00000000" + rgb).slice(-6);
+        return ("00000000" + rgb).slice(-6);
     },
 
     toDec(hex) {
