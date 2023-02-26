@@ -6,20 +6,29 @@ class Map
     constructor(config)
     {
         console.log('Map.constructor');
-        
-        this.images  = config.images;
-        this.data    = config.json['territories'];
-        this.canvas  = config.canvas;
-        this.ctx     = config.canvas.getContext('2d', { willReadFrequently: true });
 
-        this.buffer  = config.buffer;
-        this.hoverId = null;
+        this.parent = config.parent;
+        this.data   = config.parent.json['territories'];
+        this.canvas = config.parent.canvas;
+        this.ctx    = config.parent.canvas.getContext('2d', { willReadFrequently: true });
+
+        console.log('--> '+this.data[0].fill );
+
+        // this.images  = config.images;
+        // this.data    = config.json['territories'];
+
+        // console.log(this.data);
+
+        
+
+        // this.buffer  = config.buffer;
+        //this.currentHover = null;
 
         this.territories = [];
 
         for (let i=0; i<this.data.length; i++) 
-        {
-            this.territories[i] = new Territory({ id:i, ...this.data[i], buffer:this.buffer, canvas:this.canvas, images:this.images } );
+        {   
+            this.territories[i] = new Territory({ id:i, colors:{ border:'#000', hover:'#f00', fill:this.data[i].fill }, ...this.parent } );
         }
     }
 
@@ -48,31 +57,21 @@ class Map
 
         if(dec !== 0)
         {
-            const index = this.data.findIndex(obj => obj.color === hex);
-            const territory = this.territories[index];
-
-            territory.sprite.draw(this.buffer, this.canvas, true);
+            //if(this.currentHover!==null) { this.territories[ this.currentHover ].hover(false); }
+            // TODO faulty!
+            this.currentHover = this.data.findIndex(obj => obj.color === hex);
+            //this.territories[ this.currentHover ].hover(true);
         }
-
-
-        //console.log(dec);
-        // if(dec <= 0 && this.hoverId !== null) 
-        // {
-        //     // unhover territory        
-        //     this.hoverId = null;
-        //     return; 
-        // }
-        // const index = this.data.findIndex(obj => obj.color === hex);
     }
 
 
 
-    draw(buffer, canvas)
+    draw()
     {
         console.log('Map.draw');
 
         for (let i=0; i<this.territories.length; i++) {
-            this.territories[i].sprite.draw(buffer, canvas);
+            this.territories[i].sprite.draw();
         }
     }
 }

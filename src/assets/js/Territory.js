@@ -4,19 +4,27 @@ class Territory
 {
   constructor(config) 
   {
-    console.log('Territory.constructor ');
+    //console.log('Territory.constructor ');
     
-    this.id     = config.id;
-    this.name   = config.name;
-    this.sprite = new Sprite({ ...config });
+    this.id      = config.id;
+    this.name    = config.name;
+    this.colors  = config.colors;
+    this.sprite  = new Sprite(config);
     
-    this.stateIndex = Territory.IDLE;
-    this.state      = Territory.STATES[0];
+    //this.stateIndex = Territory.IDLE;
+    //this.state      = Territory.STATES[0];
   }
 
   init() 
   {
     console.log('Territory.init');
+  }
+
+  hover(isHovering)
+  {
+    console.log('pskjsdkf');
+    if(isHovering) { this.sprite.drawBorder(this.colors.border); }
+    else {           this.sprite.drawBorder(this.colors.hover);  }
   }
 
   draw() 
