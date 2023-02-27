@@ -1,4 +1,3 @@
-import Territory from './Territory.js';
 import utils from './utils.js';
 
 class Map
@@ -6,42 +5,40 @@ class Map
     constructor(config)
     {
         console.log('Map.constructor');
+        this.territories  = config.territories;
+        this.staticLayer  = config.staticLayer;
+        this.dynamicLayer = config.dynamicLayer;
+        
+                
 
-        this.parent = config.parent;
-        this.data   = config.parent.json['territories'];
-        this.canvas = config.parent.canvas;
-        this.ctx    = config.parent.canvas.getContext('2d', { willReadFrequently: true });
+        // this.parent = config.parent;
+        // this.data   = config.parent.json['territories'];
+        // this.canvas = config.parent.canvas;
+        // this.ctx    = config.parent.canvas.getContext('2d', { willReadFrequently: true });
 
-        console.log('--> '+this.data[0].fill );
-
-        // this.images  = config.images;
-        // this.data    = config.json['territories'];
-
-        // console.log(this.data);
+        // console.log('--> '+this.data[0].fill );
 
         
 
-        // this.buffer  = config.buffer;
-        //this.currentHover = null;
+        // this.territories = [];
 
-        this.territories = [];
-
-        for (let i=0; i<this.data.length; i++) 
-        {   
-            this.territories[i] = new Territory({ id:i, colors:{ border:'#000', hover:'#f00', fill:this.data[i].fill }, ...this.parent } );
-        }
+        // for (let i=0; i<this.data.length; i++) 
+        // {   
+        //     this.territories[i] = new Territory({ id:i, colors:{ border:'#000', hover:'#f00', fill:this.data[i].fill }, ...this.parent } );
+        // }
     }
 
     init()
     {
         console.log('Map.init');
 
-        for (let i=0; i<this.territories.length; i++) 
-        {
-            this.territories[i].init();
+        for (let i=0; i<this.territories.length; i++) {
+            this.territories[i].init( this.staticLayer.ctx );
         }
 
-        this.canvas.addEventListener('mousemove', this.onHover.bind(this));
+
+
+        // this.canvas.addEventListener('mousemove', this.onHover.bind(this));
     }
 
     onHover(event)
@@ -77,6 +74,17 @@ class Map
 }
 
 export default Map;
+
+
+
+
+
+
+
+
+
+
+
 
 
 

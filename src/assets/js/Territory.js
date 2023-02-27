@@ -4,51 +4,60 @@ class Territory
 {
   constructor(config) 
   {
-    //console.log('Territory.constructor ');
+    console.log('Territory.constructor ');
     
-    this.id      = config.id;
-    this.name    = config.name;
-    this.colors  = config.colors;
-    this.sprite  = new Sprite(config);
+    this.id    = config.id;
+    this.name  = config.name;
+    this.image = config.image;
+    this.color = config.color;
     
+    //console.log(this.color);
+    //this.colors  = config.colors;
+    //this.sprite  = new Sprite(config);
     //this.stateIndex = Territory.IDLE;
     //this.state      = Territory.STATES[0];
   }
 
-  init() 
+  init(ctx) 
   {
-    console.log('Territory.init');
+    //console.log(ctx);
+
+    this.draw(ctx);
+    
   }
 
   hover(isHovering)
   {
-    console.log('pskjsdkf');
     if(isHovering) { this.sprite.drawBorder(this.colors.border); }
     else {           this.sprite.drawBorder(this.colors.hover);  }
   }
 
-  draw() 
+  draw(ctx) 
   {
-    console.log('Territory.draw');
+    const { x:sx, y:sy, w:sw, h:sh } = this.image.src;
+    const { x:dx, y:dy, w:dw, h:dh } = this.image.dest;
+    const buffer = Territory.BUFFER.ctx;
 
-    // const { x, y, w, h } = this.data.src;
-    // const dx = this.data.dest.x;
-    // const dy = this.data.dest.y;
+    buffer.clearRect(0, 0, buffer.canvas.width, buffer.canvas.height);
 
-    // if(this.id === 0) 
-    // {        
-    //     ctx.drawImage(this.images.area,  x, y, w, h,  dx, dy, w, h);          // draw (source) area
-    //     ctx.globalCompositeOperation = "source-in";
-    //     ctx.fillStyle = this.color;                                                     
-    //     ctx.fillRect(dx, dy, w, h);                                           // draw fillcolor
-    //     ctx.globalCompositeOperation = "source-over";
-    //     ctx.drawImage(this.images.border,  x, y, w, h,  dx, dy, w, h);
-    // }    
-    
-    // console.log(this.config);
+    buffer.drawImage(Territory.IMAGE.AREA, sx, sy, sw, sh, dx, dy, dw, dh);
+    buffer.globalCompositeOperation = "source-in";
+    buffer.fillStyle = this.color; 
+    buffer.fillRect(dx, dy, dw, dh);                                           
+    buffer.globalCompositeOperation = "source-over";
+    ctx.drawImage(buffer.canvas, 0, 0, buffer.canvas.width, buffer.canvas.height, 0, 0, ctx.canvas.width, ctx.canvas.height);  
 
+    ctx.drawImage(Territory.IMAGE.BORDER,  sx, sy, sw, sh, dx, dy, dw, dh);
   }
 }
+
+Territory.IMAGE  = { AREA:null, BORDER:null, SELECTED:null };
+Territory.COLOR  = { AREA:'cyan', BORDER:'black', HOVER:'red' };
+Territory.BUFFER = null;
+
+
+
+
 
 Territory.STATES = ['idle', 'attacking', 'defending'];
 Territory.IDLE   = 0;

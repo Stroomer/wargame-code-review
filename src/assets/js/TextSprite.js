@@ -2,8 +2,8 @@ class TextSprite
 {
     constructor(config)
     {
-        this.pos    = {  x:config.x || 160, y:config.y || 90 };
-        this.text   = config.text   || 'test' ;
+        this.pos    = { x:config.x, y:config.y };
+        this.text   = config.text   || '' ;
         this.size   = config.size   || TextSprite.SIZE.MEDIUM;
         this.align  = config.align  || TextSprite.ALIGN.CENTER;
         this.valign = config.valign || TextSprite.VALIGN.MIDDLE;
@@ -22,9 +22,9 @@ class TextSprite
         }
     }
 
-    init()
+    init(config)
     {
-
+        this.text = config.text || 'test';
     }
 
     get x()
