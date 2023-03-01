@@ -1,44 +1,23 @@
 import utils from './utils.js';
+import Canvas from './Canvas.js';
 
 class Map
 {
     constructor(config)
     {
         console.log('Map.constructor');
-        this.territories  = config.territories;
-        this.staticLayer  = config.staticLayer;
-        this.dynamicLayer = config.dynamicLayer;
-        
-                
-
-        // this.parent = config.parent;
-        // this.data   = config.parent.json['territories'];
-        // this.canvas = config.parent.canvas;
-        // this.ctx    = config.parent.canvas.getContext('2d', { willReadFrequently: true });
-
-        // console.log('--> '+this.data[0].fill );
-
-        
-
-        // this.territories = [];
-
-        // for (let i=0; i<this.data.length; i++) 
-        // {   
-        //     this.territories[i] = new Territory({ id:i, colors:{ border:'#000', hover:'#f00', fill:this.data[i].fill }, ...this.parent } );
-        // }
+        this.territories = config.territories;
+        this.hoverIndex  = null;
     }
 
     init()
     {
         console.log('Map.init');
-
         for (let i=0; i<this.territories.length; i++) {
-            this.territories[i].init( this.staticLayer.ctx );
+            this.territories[i].init();
         }
-
-
-
-        // this.canvas.addEventListener('mousemove', this.onHover.bind(this));
+  
+        Canvas.TOP_LAYER.canvas.addEventListener('mousemove', this.onHover.bind(this));
     }
 
     onHover(event)
@@ -46,30 +25,33 @@ class Map
         const { target, clientX, clientY } = event;
         const { left, top, width, height } = target.getBoundingClientRect();
 
+        const ctx  = Canvas.MAP.STATIC.ctx;
         const x    = (clientX - left) / (width  / 320);
         const y    = (clientY - top)  / (height / 180);
-        const data = this.ctx.getImageData(x, y, 1, 1).data;
+        const data = ctx.getImageData(x, y, 1, 1).data;
         const hex  = utils.toHex(data);
         const dec  = utils.toDec(hex);
+        
+        const currentHoverIndex = this.hoverIndex;
 
-        if(dec !== 0)
+        if(dec !== 0) 
         {
-            //if(this.currentHover!==null) { this.territories[ this.currentHover ].hover(false); }
-            // TODO faulty!
-            this.currentHover = this.data.findIndex(obj => obj.color === hex);
-            //this.territories[ this.currentHover ].hover(true);
+            this.hoverIndex = this.territories.findIndex(obj => obj.color === hex);
+        }
+        else
+        {
+            this.hoverIndex = null;
+        }
+
+        if(currentHoverIndex !== this.hoverIndex)
+        {
+            utils.emitEvent("TerritoryHover", { index: this.hoverIndex });
         }
     }
 
-
-
     draw()
     {
-        console.log('Map.draw');
 
-        for (let i=0; i<this.territories.length; i++) {
-            this.territories[i].sprite.draw();
-        }
     }
 }
 

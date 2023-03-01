@@ -1,3 +1,6 @@
+import Canvas from './Canvas.js';
+import utils from './utils.js';
+
 class TextSprite 
 {
     constructor(config)
@@ -7,7 +10,6 @@ class TextSprite
         this.size   = config.size   || TextSprite.SIZE.MEDIUM;
         this.align  = config.align  || TextSprite.ALIGN.CENTER;
         this.valign = config.valign || TextSprite.VALIGN.MIDDLE;
-        this.chars = TextSprite.CHARS;
 
         switch(this.size)
         {
@@ -22,52 +24,63 @@ class TextSprite
         }
     }
 
-    init(config)
+    init()
     {
-        this.text = config.text || 'test';
+        this.draw(Canvas.BUFFER.ctx, Canvas.UI.DYNAMIC.ctx);
     }
 
     get x()
     {
+        const length=this.text.length; const width=this.char.width; const height=this.char.height; const space=this.char.space; 
         let x = 0;
         switch(this.align) {
-            case TextSprite.ALIGN.LEFT:   x = this.pos.x - (((this.text.length * (this.char.width + this.char.space))-this.char.space));     break;
-            case TextSprite.ALIGN.CENTER: x = this.pos.x - (((this.text.length * (this.char.width + this.char.space))-this.char.space) / 2); break;
-            case TextSprite.ALIGN.RIGHT:  x = this.pos.x;                                                                                    break; 
+            case TextSprite.ALIGN.LEFT:   x = this.pos.x - (((length * (width + space))-space));     break;
+            case TextSprite.ALIGN.CENTER: x = this.pos.x - (((length * (width + space))-space) / 2); break;
+            case TextSprite.ALIGN.RIGHT:  x = this.pos.x;                                            break; 
         }
         return Number.parseInt(x);
     }
 
     get y()
     {
+        const height=this.char.height;
         let y = 0;
         switch(this.valign) {
-            case TextSprite.VALIGN.TOP:    y = this.pos.y;                          break;
-            case TextSprite.VALIGN.MIDDLE: y = this.pos.y - (this.char.height / 2); break;
-            case TextSprite.VALIGN.BOTTOM: y = this.pos.y - (this.char.height);     break; 
+            case TextSprite.VALIGN.TOP:    y = this.pos.y;                break;
+            case TextSprite.VALIGN.MIDDLE: y = this.pos.y - (height / 2); break;
+            case TextSprite.VALIGN.BOTTOM: y = this.pos.y - (height);     break; 
         }
         return Number.parseInt(y);
     }
 
-    draw(bctx, ctx) 
+    setText(text)
     {
-        if(this.text.length===0) { console.log('Cannot draw empty string'); return };
-        bctx.clearRect(0, 0, bctx.canvas.width, bctx.canvas.height);
-        for(let i=0; i<this.text.length; i++)
-        {
-            const index = this.chars.indexOf(this.text[i]);
-            const srcX  = 1+(index*(this.char.width+this.char.space));
-            const srcY  = 1;
-            const srcW  = this.char.width;
-            const srcH  = this.char.height;
-            const destX = i*(this.char.width+this.char.space);
-            const destY = 0;
-            const destW = this.char.width;
-            const destH = this.char.height;
+        this.text = text;
+        this.draw(Canvas.BUFFER.ctx, Canvas.UI.DYNAMIC.ctx);   
+    }
 
-            bctx.drawImage(this.image, srcX, srcY, srcW, srcH, destX, destY, destW, destH);
+    draw(buffer, ctx) 
+    {
+        buffer.clearRect(0, 0, buffer.canvas.width, buffer.canvas.height);
+
+        const length=this.text.length; const width=this.char.width; const height=this.char.height; const space=this.char.space; 
+        for(let i=0; i<length; i++)
+        {
+            const char  = this.text[i];
+            const index = TextSprite.CHARS.indexOf(char);
+            const sx    = 1+(index*(width+space));
+            const sy    = 1;
+            const sw    = width;
+            const sh    = height;
+            const dx    = i*(width+space);
+            const dy    = 0;
+            const dw    = width;
+            const dh    = height;
+
+            buffer.drawImage(this.image, sx, sy, sw, sh, dx, dy, dw, dh);
         }
-        ctx.drawImage(bctx.canvas, this.x, this.y);
+        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);       // is this really a necessity??
+        ctx.drawImage(buffer.canvas, this.x, this.y);
     }
 }
 
@@ -76,5 +89,6 @@ TextSprite.SIZE   = { MEDIUM:1, LARGE:2 };
 TextSprite.ALIGN  = { LEFT:1, CENTER:2, RIGHT:3 };
 TextSprite.VALIGN = { TOP:1, MIDDLE:2, BOTTOM:3 };
 TextSprite.CHARS  = 'abcdefghijklmnopqrstuvwxyz0123456789 @';
+
 
 export default TextSprite;

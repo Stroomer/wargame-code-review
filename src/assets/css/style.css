@@ -22,7 +22,7 @@ body {
     object-fit: contain;
     max-height: 100%;
     max-width: 100%;
-    background-color: #85bdeb;
+    /* background-color: #85bdeb; */
     position: fixed; 
     left: 0; 
     top: 0;
@@ -30,6 +30,6 @@ body {
 
 .game-layer-container canvas.layer-buffer      { z-index: 0; display: none; }
 .game-layer-container canvas.layer-map-static  { z-index: 1; }
-.game-layer-container canvas.layer-map-dynamic { z-index: 2; display: none; }
-.game-layer-container canvas.layer-ui-static   { z-index: 3; display: none; }
-.game-layer-container canvas.layer-ui-dynamic  { z-index: 4; display: none; }
+.game-layer-container canvas.layer-map-dynamic { z-index: 2; }
+.game-layer-container canvas.layer-ui-static   { z-index: 3; }
+.game-layer-container canvas.layer-ui-dynamic  { z-index: 4; }

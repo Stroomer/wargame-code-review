@@ -18,4 +18,8 @@ const game = new Game({
 
 game.init();
 
+// const mycanvas = document.createElement('canvas');
+// const ctx = mycanvas.getContext('2d');   // , { willReadFrequently: true }    // Why STRING??? Should be BOOL!
+// console.log(ctx.getContextAttributes());
+
 export default game;
